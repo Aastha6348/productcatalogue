@@ -1,0 +1,25 @@
+<div class="container">
+  <div class = "row">
+    <div class = "column" style="float:left; width:30%">
+      <h1> Featuring our Products</h1>
+    </div>
+    <div class="column" style="float:center; width:70%">
+      <table class="table" align="center">
+        <tr style="text-align:center">
+          <th sortName [sortKey]="'name'" [data]="productContent">#</th>
+          <th sortName [sortKey]="'name'" [data]="productContent">Name</th>
+          <th sortName [sortKey]="'weight'" [data]="productContent">Weight</th> 
+          <th sortName [sortKey]="'availability'" [data]="productContent">Availability</th>
+          <th sortName [sortKey]="'isEditable'" [data]="productContent"> IsEditable</th>
+        </tr>
+        <tr *ngFor="let product of productContent; let i = index " style="text-align:center">
+          <td>{{i + 1}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.weight}}</td>
+          <td>{{product.availability}}</td>
+          <td><button aria-label="Edit Product" class="buttonClass" (click)="onUpdateClick(i)">Edit</button>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

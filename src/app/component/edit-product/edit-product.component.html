@@ -1,0 +1,37 @@
+<div class="container">
+  <h1> Edit our Products Here</h1>
+  <!-- Go back Button to previous page -->
+  <button (click)="goBack()" class="goBack" aria-label="Go to back button">Go Back</button>
+  
+  <!-- Form to edit Products -->
+  <form [formGroup]="formdata" (ngSubmit) = "onAddClick(formdata.value)" >
+    <span *ngIf="formdata.invalid" class = "errorClass"> Please Fill Data Correctly.</span>   
+    <br/>
+    <br/>
+    <span class="inputfield">Name:</span>
+    <input type="text" name="name" placeholder="name" formControlName="name"/>
+    <span class="inputfield">Weight:</span>
+    <input type="number" name="weight" placeholder="weight" formControlName="weight">
+    <span class="inputfield">Availability:</span>
+    <input type="number" name="availability" placeholder="availability" formControlName="availability">
+    <span class="inputfield">ProductUrl:</span>
+    <input type="text" name="productUrl" placeholder="productUrl" formControlName="productUrl">
+    <span class="inputfield">PricingTier:</span>
+    <label><input type="radio" value="premier" formControlName="pricingTier" (change)="onSelect($event.target.value)"><span>Premier</span></label>
+    <label><input type="radio" value="budget" formControlName="pricingTier" (change)="onSelect($event.target.value)"><span>Budget</span></label>
+    <br/>
+    <br/>
+    <span class="inputfield">IsEditable:</span>
+    <label><input type="checkbox" id="checkbox-1" value="true" formControlName="isEditable" checked/><span>True</span></label>
+    <label><input type="checkbox" id="checkbox-2" value="false" formControlName="isEditable" /><span>False</span></label>
+    <br/>
+    <br/>
+    <label for="priceRange" class="inputfield">PricingRange:</label>
+    <select class="form-control" id="priceRange" formControlName="priceRange">
+      <option *ngFor="let range of priceRange">{{range}}</option>
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" [disabled]="!formdata.valid" class="formsubmit" value="Edit Product" name="submit">
+  </form>
+</div>
